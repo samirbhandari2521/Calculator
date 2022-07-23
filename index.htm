@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stylish Calculator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      #calc{
+        box-shadow: 0px 0px 5px 5px yellow;
+        height: 75vh;
+        width: 40vw;
+        background-color: rgb(0, 0, 0);
+        margin: auto;
+        margin-top: 50px;
+        border-radius: 30px;
+      }
+      .screen{
+        display: flex;
+        width: 100%;
+        height: 15%;
+        background-color: rgb(0, 0, 0);
+        justify-content: center;
+        border-radius: 20px 20px 0px 0px;
+      }
+      .screen input{
+        box-sizing: border-box;
+        padding: 10px;
+        font-weight: 600;
+        font-size: xx-large;
+        height: 80%;
+        align-self: center;
+        width: 90%;
+        margin-top: 30px;
+        border: 4px solid rgb(125, 119, 119);
+
+      }
+      .keys{
+        border-radius: 0px 0px 20px 20px;
+        box-sizing: border-box;
+        height: 85%;
+        width: 100%;
+        background-color: black;
+      }
+      .row{
+        height: 18%;
+        width: 90%;
+        background-color: rgb(0, 0, 0);
+        margin: auto;
+        margin-bottom: 10px;
+      }
+      .btn{
+        border-radius: 10px;
+        height: 65%;
+        width: 15%;
+        margin:10px;
+        font-size: x-large;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0px 0px 10px 5px red;
+      }
+     .ap{
+      margin-left: 30px;
+      height: 65%;
+      width: 30%;
+      cursor: pointer;
+      box-shadow: 0px 0px 10px 5px rgb(0, 106, 255);
+
+     }
+     #topic{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: xx-large;
+      font-weight: 900;
+      color:white;
+      font-style: italic;
+     }
+     #topic:hover{
+      color: aqua;
+      
+     }
+     #sett{
+      border-radius: 20px;
+      box-sizing: border-box;
+      background-color: rgb(97, 97, 109);
+      height: 10vh;
+     padding: 10px;
+      justify-content: center;
+      box-shadow: 0px 0px 22px 4px purple;
+      align-items: center;
+      
+     }
+     .s-text{
+      border-radius: 10px;
+      margin: 3px;
+      background-color: black;
+      height: 50%;
+      border: 2px solid white;
+      padding: 3px;
+      color:rgb(167, 255, 100);
+      font-weight: 200;
+    
+      
+     }
+     #close{
+      width: 10%;
+      height: 10%;
+      margin: 0;
+      padding: 0;
+      display: none;
+     }
+     #close:hover{
+      background-color: aqua;
+     }
+     .s-text::placeholder{
+      color:white;
+     }
+     .ap{
+      font-size: x-large;
+      font-weight: 700;
+      font-style: oblique;
+      background-color: beige;
+     }
+     .btn:hover,.ap:hover{
+      transform: scale(1.13);
+      box-shadow: 0px 0px 10px 5px rgb(41, 200, 137);
+     }
+     @media (max-width:1300px) and (min-width:391px){
+      *{
+        margin: 0px;padding: 0px;
+      }
+      #close{
+        display: block;
+      }
+      #calc{
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px 0px;
+      }
+      #sett{
+        margin: 10px;
+        height: 100vh;
+        flex-direction: column;
+      }
+      .s-text{
+        width: 75%;
+        height: 20%;
+        font-size: xx-large;
+        font-weight: 400;
+      }
+     }
+     @media (max-width:500px) and (min-width:300px){
+      *{
+        margin: 0;padding: 0;
+      }
+      #sett{
+        margin: 10px;
+        height: 100vh;
+        flex-direction: column;
+      }
+      .s-text{
+        width: 75%;
+        height: 20%;
+        font-size: xx-large;
+        font-weight: 800;
+      }
+      #calc{
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px 0px;
+      }
+      #topic{
+        display: block;
+        font-size: large;
+        text-align: center;
+        
+      }
+      #close{
+        display: block;
+      }
+      .ap{
+        height: 70px;
+        width: 73px;
+      }
+      .keys{
+        padding-top: 80px;
+      }
+      .screen{
+        position: relative;
+        top: 50px;
+      }
+      #sett{
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px 0px;
+        margin: 0;
+        border: 4px solid rgb(220, 140, 140);
+      }
+      .s-text{
+        width: 75%;
+        height: 20%;
+        font-size: large;
+        
+      }
+    
+     }
+     
+   
+  
+    </style>
+  </head>
+  <body>
+    <div style=" display: none" id="sett">
+      <input onkeyup="stylee(value,0)"  class="s-text" type="text" placeholder="Calculator Color">
+      <input onkeyup="stylee(value,1)" class="s-text"type="text" placeholder="Buttons Background">
+      <input onkeyup="stylee(value,2)" class="s-text"type="text" placeholder="Buttons Text Color">
+      <input onkeyup="stylee(value,3)" class="s-text"type="text" placeholder="Text Color">
+      <input onkeyup="stylee(value,4)" class="s-text"type="text" placeholder="Screen Text Color">
+      <input onkeyup="stylee(value,5)" class="s-text"type="text" placeholder="Screen Background">
+      <button id="close" class="s-text">❌</button>
+    </div>
+    <div id="calc">
+      <div class="screen">
+        <input id="sc" onkeyup="oi(value)" type="text">
+
+      </div>
+      <div class="keys">
+        <div id="topic" class="row">
+          SAMIR CALCULATOR 
+        </div>
+        <div class="row">
+          <button onclick="va(value)" class="btn" value="1">1</button>
+          <button onclick="va(value)" class="btn" value="2">2</button>
+          <button onclick="va(value)" class="btn" value="3">3</button>
+          <button onclick="va(value)" class="ap" value="+">+</button>
+
+        </div>
+        <div class="row">
+          <button onclick="va(value)"  class="btn" value="4">4</button>
+          <button onclick="va(value)"  class="btn" value="5">5</button>
+          <button onclick="va(value)"  class="btn" value="6">6</button>
+          <button onclick="va(value)"  class="ap" value="-">-</button>
+          
+        </div>
+        <div class="row">
+          <button onclick="va(value)"  class="btn" value="7">7</button>
+          <button onclick="va(value)"  class="btn" value="8">8</button>
+          <button onclick="va(value)"  class="btn" value="9">9</button>
+          <button onclick="va(value)"  class="ap" value="-">*</button>
+          
+        </div>
+        <div class="row">
+          <button onclick="va(value)"  class="btn" value="/">/</button>
+          <button onclick="clesar()" class="btn" value="C"> C </button>
+          <button onclick="equal()" class="btn" value="=">=</button>
+          <button class="ap" onclick="setting()">Style</button>
+          
+        </div>
+       
+
+      </div>
+    </div>
+  
+    
+    <script>
+      var value1="";
+      function setting(){
+        if(document.getElementById('sett').style.display=="none"){
+          document.getElementById('sett').style.display="flex";
+        }
+        else{
+          document.getElementById('sett').style.display="none";
+        }
+
+      }
+      function stylee(value,num){
+        
+          if(num==0){
+            var a=document.getElementsByClassName('row');
+            for(i=0;i<5;i++){
+              a[i].style.background=value;
+            }
+            document.querySelector('.screen').style.background=value;
+            document.querySelector('.keys').style.background=value;
+          }
+          else if(num==1){
+            var a=document.getElementsByClassName('btn');
+            var as=document.getElementsByClassName('ap');
+            for(i=0;i<12;i++){
+              a[i].style.background=value;
+              if(i<4){
+                as[i].style.background=value;
+              }
+            
+            }
+
+          }
+          else if(num==2){
+            var a=document.getElementsByClassName('btn');
+            var as=document.getElementsByClassName('ap');
+            for(i=0;i<12;i++){
+              a[i].style.color=value;
+              if(i<4){
+                as[i].style.color=value;
+              }
+            }
+
+          }
+          else if(num==3){
+            var a=document.getElementById('topic');
+            a.style.color=value;
+
+          }
+          else if(num==4){
+            var a=document.getElementById('sc');
+            a.style.color=value;
+
+          }
+          else if(num==5){
+            var a=document.getElementById('sc');
+            a.style.background=value;
+
+          }
+          else{
+
+          }
+        
+        
+        
+        }
+        function va(val){
+         
+          value1=value1+val;
+          var y=document.getElementById('sc').value=value1;
+         
+        }
+        function equal(){     
+      
+          var yf=document.getElementById('sc').value=eval(value1);
+          value1=eval(value1)
+        
+        }
+        function clesar(){
+          
+          value1=""
+          var yq=document.getElementById('sc').value="";
+        };
+        function oi(alue){
+    
+          
+          document.getElementById('sc').value=eval(alue);
+          value1=eval(alue);
+
+        }
+var clodse=document.getElementById('close');
+clodse.addEventListener('click',function(){
+  document.getElementById('sett').style.display="none";
+})
+
+ 
+ 
+   
+    
+   
+    </script>
+  </body>
+</html>
